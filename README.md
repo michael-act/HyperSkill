@@ -11,6 +11,6 @@ JetBrains Academy | Python Developer (https://hyperskill.org/profile/39527951)
 6. [Simple Chatty Bot](https://hyperskill.org/projects/97?track=2) ❌ 
 
 ### Information
-❌ I have finished it but I don't want to share because it's so easy.
-✔️ Finish and have been shared.
-⏳ Not finished yet.
+❌ I have finished it but I don't want to share because it's so easy. <br />
+✔️ Finish and have been shared. <br />
+⏳ Not finished yet. <br />
