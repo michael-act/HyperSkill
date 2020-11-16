@@ -1,5 +1,5 @@
 from random import shuffle
-from time import process_time
+from time import perf_counter
 
 class Increment:
 	def __init__(self):
@@ -13,12 +13,12 @@ def arrangeGame(symbol):
 	# Print the table game
 	temp_symbol = symbol[::]
 
-	print('-------------------')
+	print('---------')
 	for row in symbol:
 		print('| ', end='')
 		print(' '.join(str(cell) for cell in row), end='')
 		print(' |')
-	print('-------------------')
+	print('---------')
 
 def updateGame(coor):
 	if [_ for _ in coor.strip() if _ in '012345678'] == []:
@@ -64,7 +64,7 @@ bfruit = [[bfruit[bfruit_inc.increment()] for row in range(3)] for column in ran
 
 print('Tips: Match letter by letter to win the game!')
 arrangeGame(ffruit)
-start_time = process_time()
+start_time = perf_counter()
 while True:
 	act1 = updateGame(input("Enter the coordinates 1: > "))
 	if act1:
@@ -80,5 +80,5 @@ while True:
 			pass
 	else:
 		pass
-end_time = process_time()
-print(f'Spent Time: {end_time - start_time}')
+end_time = perf_counter()
+print(f'Spent Time: {round(end_time - start_time, 1)} Second')
