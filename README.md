@@ -1,7 +1,5 @@
 # HyperSkill
 JetBrains Academy | Python Developer (https://hyperskill.org/profile/39527951)
-<<<<<<< HEAD
-=======
 
 ## Projects
 - Easy <br />
@@ -16,4 +14,3 @@ JetBrains Academy | Python Developer (https://hyperskill.org/profile/39527951)
 ❌ I have finished it but I don't want to share because it's so easy. <br />
 ✔️ Finish and have been shared. <br />
 ⏳ Not finished yet. <br />
->>>>>>> 5d30148174f85e04ec2ec7241d8a690c07b5a93a
