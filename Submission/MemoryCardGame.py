@@ -64,7 +64,7 @@ bfruit = [[bfruit[bfruit_inc.increment()] for row in range(3)] for column in ran
 
 print('Tips: Match letter by letter to win the game!')
 arrangeGame(ffruit)
-tic = time.clock()
+tic = clock()
 while True:
 	act1 = updateGame(input("Enter the coordinates 1: > "))
 	if act1:
@@ -80,5 +80,5 @@ while True:
 			pass
 	else:
 		pass
-toc = time.clock()
+toc = clock()
 print(f'Spent Time: {toc - tic}')
