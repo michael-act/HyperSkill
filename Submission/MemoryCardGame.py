@@ -1,6 +1,5 @@
 from random import shuffle
 import time
-from time import clock
 
 class Increment:
 	def __init__(self):
