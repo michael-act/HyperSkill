@@ -15,9 +15,9 @@ def arrangeXO(symbol):
 			del temp_symbol[0]
 		print(' |')
 	print('---------')
-	return checkWin(symbol, symbol_m)
+	return check_win(symbol, symbol_m)
 
-def checkWin(symbol, symbol_m):
+def check_win(symbol, symbol_m):
 	in_line = [[symbol[_] for _ in range(0, 9, 4)],  # Right Diagonal
 				[symbol[_] for _ in range(2, 8, 2)],  # Left Diagonal
 				symbol_m[0], symbol_m[1], symbol_m[2],  # Sideways
@@ -44,6 +44,7 @@ def updateXO(coor):
 	symbol_set = {'1 3':symbols[0], '2 3':symbols[1], '3 3':symbols[2],
 				'1 2':symbols[3], '2 2':symbols[4], '3 2':symbols[5],
 				'1 1':symbols[6], '2 1':symbols[7], '3 1':symbols[8]}
+	print(switchXO)
 	if [_ for _ in coor.strip() if _ in '012345678'] == []:
 		print("You should enter numbers!")
 	elif int(coor[0]) > 3 or int(coor[2]) > 3:
