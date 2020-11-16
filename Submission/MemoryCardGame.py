@@ -1,5 +1,9 @@
 from random import shuffle
+<<<<<<< HEAD
 import time
+=======
+from time import clock
+>>>>>>> 5d30148174f85e04ec2ec7241d8a690c07b5a93a
 
 class Increment:
 	def __init__(self):
@@ -64,7 +68,11 @@ bfruit = [[bfruit[bfruit_inc.increment()] for row in range(3)] for column in ran
 
 print('Tips: Match letter by letter to win the game!')
 arrangeGame(ffruit)
+<<<<<<< HEAD
 tic = time.clock()
+=======
+tic = clock()
+>>>>>>> 5d30148174f85e04ec2ec7241d8a690c07b5a93a
 while True:
 	act1 = updateGame(input("Enter the coordinates 1: > "))
 	if act1:
@@ -80,5 +88,9 @@ while True:
 			pass
 	else:
 		pass
+<<<<<<< HEAD
 toc = time.clock()
+=======
+toc = clock()
+>>>>>>> 5d30148174f85e04ec2ec7241d8a690c07b5a93a
 print(f'Spent Time: {toc - tic}')
