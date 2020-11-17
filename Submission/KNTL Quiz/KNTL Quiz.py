@@ -12,8 +12,6 @@ def initGame(word='', status=False):
 	hideWord = word
 	if status:
 		print('You Win!')
-		print()
-		repeatGame()
 	else:
 		letter = 'ABCDEFGHIJMPQRSUVWXYZ'
 		for let in letter:
@@ -54,5 +52,15 @@ while True:
 		repeatGame()
 	elif updateGame(answer):
 		pass
+
+data = readDB()
+setWord = data[random.randint(0, len(data))]
+realWord = setWord[0]
+wordDesc = setWord[1]
+print(f'Question: {wordDesc}')
+initGame(realWord)
+while True:
+	if updateGame(input('What the answer? > ')):
+		break
 	else:
 		pass
