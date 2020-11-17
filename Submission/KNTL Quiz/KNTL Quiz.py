@@ -1,66 +1,52 @@
-import random
 import sqlite3
+from random import randint
 
 def arrangeWord(word):
 	print('----------')
 	print(f'| {word} |')
 	print('----------')
 
-def initGame(word='', status=False):
-	global hideWord
+def initGame(status=False):
+	global hideWord, realWord
 
-	hideWord = word
-	if status:
-		print('You Win!')
-	else:
-		letter = 'ABCDEFGHIJMPQRSUVWXYZ'
-		for let in letter:
-			hideWord = hideWord.replace(let, '*')
-		arrangeWord(hideWord)
+	keyword = 'KENTEL'
+	keyword = keyword.replace('E', 'O')
+	data = readDB()
+	realWord = data[0]
+	wordDesc = data[1]
+	hideWord = list(realWord)
+	print(f'Question: {wordDesc}')
+	for i in range(6):
+		if realWord[i] != keyword[i]:
+			hideWord[i] = '*'
+	hideWord = ''.join(hideWord)
+	arrangeWord(hideWord)
 
-def updateGame(word):
+def checkGame(word):
 	if word == realWord:
-		initGame(word=hideWord, status=True)
+		print('Congrats! You got the word.')
 		return True
 	else:
-		initGame(word=hideWord)
+		arrangeWord(hideWord)
 		return False
 
 def readDB():
 	conn = sqlite3.connect('KNTLword.db')
 	c = conn.cursor()
-	c.execute('SELECT word, word_desc FROM KNTLword')
-	data = c.fetchall()
+	c.execute(f'SELECT COUNT(*) FROM KNTLword')
+	totalData = c.fetchall()[0][0]
+	c.execute(f'SELECT word, word_desc FROM KNTLword WHERE word_id={randint(0, totalData - 1)}')
+	data = c.fetchall()[0]
 	return data
 
-def repeatGame():
-	global realWord
-
-	data = readDB()
-	setWord = data[random.randint(0, len(data))]
-	realWord = setWord[0]
-	wordDesc = setWord[1]
-	print(f'Question: {wordDesc}')
-	initGame(realWord)
-
-print("Type 'PASS' if you give up")
-repeatGame()
+print("Type 'PASS' if you give up.")
+initGame()
 while True:
-	answer = input('What the answer? > ')
+	answer = input('What the answer? > ').upper()
 	if answer == 'PASS':
 		print()
-		repeatGame()
-	elif updateGame(answer):
-		pass
-
-data = readDB()
-setWord = data[random.randint(0, len(data))]
-realWord = setWord[0]
-wordDesc = setWord[1]
-print(f'Question: {wordDesc}')
-initGame(realWord)
-while True:
-	if updateGame(input('What the answer? > ')):
+		initGame()
+	elif checkGame(answer):
 		break
 	else:
 		pass

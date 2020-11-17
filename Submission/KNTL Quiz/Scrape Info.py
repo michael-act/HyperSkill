@@ -23,6 +23,7 @@ wordList = ['00-indonesian-wordlist.lst',
 			'01-kbbi3-2001-sort-alpha.lst', 
 			'03-indodict2008-sort-alpha.lst', 
 			'05-ivanlanin2011-sort-alpha.lst']
+success, passed, failed = 0, 0, 0
 
 for file in wordList:
 	file = f'indonesian-wordlist/{file}'
@@ -31,17 +32,26 @@ for file in wordList:
 	readFile = openFile.read().split("\n")
 	for word in readFile:
 		word = word.strip().upper()
-		if keyKNTL(word) and len(word) == 6:
-			page = requests.get(f'https://www.kamusbesar.com/{word}')
-			soup = BeautifulSoup(page.content, 'html.parser')
-			page_body = soup.findAll('span', {'class': 'word_description'})
-			if page_body:
-				info = str(page_body).split('</span>')[0]
-				info = info[info.index('>')+1::].strip(';')
-				conndb.execute(f"INSERT INTO KNTLword (word, word_desc) VALUES ('{word}', '{info}')")
-				conndb.commit()
-				print(f'{word}: Success')
+		try:
+			if len(word) == 6 and keyKNTL(word):
+				page = requests.get(f'https://www.kamusbesar.com/{word}')
+				soup = BeautifulSoup(page.content, 'html.parser')
+				page_body = soup.findAll('span', {'class': 'word_description'})
+				if page_body:
+					info = str(page_body).split('</span>')[0]
+					info = info[info.index('>')+1::].replace('-', ';').split(';')[0]
+					conndb.execute(f"INSERT INTO KNTLword (word, word_desc) VALUES ('{word}', '{info}')")
+					conndb.commit()
+					success +=1
+					print(f'{word}: Success')
+				else:
+					passed += 1
 			else:
 				pass
-		else:
-			pass
+		except sqlite3.IntegrityError:
+			failed += 1
+			print(f'{word}: Failed')
+
+print(f'Success = {success} Word')
+print(f'Failed = {failed} Word')
+print(f'Passed = {passed} Word')
