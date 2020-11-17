@@ -10,6 +10,10 @@ JetBrains Academy | Python Developer (https://hyperskill.org/profile/39527951)
 5. [Zookeeper](https://hyperskill.org/projects/98?track=2) ❌ 
 6. [Simple Chatty Bot](https://hyperskill.org/projects/97?track=2) ❌ 
 
+- My Challenge <br />
+1. [MemoryCardGame](https://github.com/michael-act/HyperSkill/blob/main/Submission/MemoryCardGame.py)
+2. [KNTL Quiz](https://github.com/michael-act/HyperSkill/tree/main/Submission/KNTL%20Quiz)
+
 ### Information
 ❌ I have finished it but I don't want to share because it's so easy. <br />
 ✔️ Finish and have been shared. <br />
