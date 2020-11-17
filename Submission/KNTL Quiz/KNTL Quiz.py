@@ -12,6 +12,8 @@ def initGame(word='', status=False):
 	hideWord = word
 	if status:
 		print('You Win!')
+		print()
+		repeatGame()
 	else:
 		letter = 'ABCDEFGHIJMPQRSUVWXYZ'
 		for let in letter:
@@ -33,14 +35,24 @@ def readDB():
 	data = c.fetchall()
 	return data
 
-data = readDB()
-setWord = data[random.randint(0, len(data))]
-realWord = setWord[0]
-wordDesc = setWord[1]
-print(f'Question: {wordDesc}')
-initGame(realWord)
+def repeatGame():
+	global realWord
+
+	data = readDB()
+	setWord = data[random.randint(0, len(data))]
+	realWord = setWord[0]
+	wordDesc = setWord[1]
+	print(f'Question: {wordDesc}')
+	initGame(realWord)
+
+print("Type 'PASS' if you give up")
+repeatGame()
 while True:
-	if updateGame(input('What the answer? > ')):
-		break
+	answer = input('What the answer? > ')
+	if answer == 'PASS':
+		print()
+		repeatGame()
+	elif updateGame(answer):
+		pass
 	else:
 		pass
