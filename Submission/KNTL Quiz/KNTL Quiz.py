@@ -33,6 +33,26 @@ def readDB():
 	data = c.fetchall()
 	return data
 
+def repeatGame():
+	global realWord
+
+	data = readDB()
+	setWord = data[random.randint(0, len(data))]
+	realWord = setWord[0]
+	wordDesc = setWord[1]
+	print(f'Question: {wordDesc}')
+	initGame(realWord)
+
+print("Type 'PASS' if you give up")
+repeatGame()
+while True:
+	answer = input('What the answer? > ')
+	if answer == 'PASS':
+		print()
+		repeatGame()
+	elif updateGame(answer):
+		pass
+
 data = readDB()
 setWord = data[random.randint(0, len(data))]
 realWord = setWord[0]
