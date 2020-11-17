@@ -13,9 +13,9 @@ def initGame(status=False):
 	keyword = keyword.replace('E', 'O')
 	data = readDB()
 	realWord = data[0]
-	wordDesc = data[1]
+	wordDesc = data[1][0].replace(data[1][0], data[1][0].upper()) + data[1][1::]
 	hideWord = list(realWord)
-	print(f'Question: {wordDesc}')
+	print(f"Question: {wordDesc}")
 	for i in range(6):
 		if realWord[i] != keyword[i]:
 			hideWord[i] = '*'
