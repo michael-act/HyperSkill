@@ -13,6 +13,7 @@ JetBrains Academy | Python Developer (https://hyperskill.org/profile/39527951)
 - My Challenge <br />
 1. [Memory Card Game](https://github.com/michael-act/HyperSkill/blob/main/Submission/MemoryCardGame.py)
 2. [KNTL Quiz](https://github.com/michael-act/HyperSkill/tree/main/Submission/KNTL%20Quiz)
+3. [MineSweeper](https://github.com/michael-act/HyperSkill/blob/main/Submission/MineSweeper.py)
 
 ### Information
 ❌ I have finished it but I don't want to share because it's so easy. <br />
